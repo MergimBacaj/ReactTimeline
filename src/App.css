@@ -1,0 +1,76 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+/* 
+.read-the-docs {
+  color: #888;
+}
+.header {
+  color: black;
+}
+.bg-yellow {
+  color: black;
+  height: 100vh;
+}
+.ripple {
+  border-radius: 30%;
+  position: relative;
+  padding: auto;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: 0.2;
+  transition: 0s;
+  -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+}
+
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, #000 10%, transparent 0.01%) no-repeat 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+.rct-header-root {
+  background-color: #fdf1f1 !important;
+  border: 0 !important;
+  border-radius: 20rem;
+  -webkit-border-radius: 20rem;
+  -moz-border-radius: 20rem;
+  -ms-border-radius: 20rem;
+  -o-border-radius: 20rem;
+}
+.rct-calendar-header {
+  border: none !important;
+}
+.rct-dateHeader {
+  color: #18242c !important;
+  border: none !important;
+}
+.rct-event {
+  background-color: #18242c;
+}
+.rct-label-group .rct-label {
+  color: #333;
+} */
