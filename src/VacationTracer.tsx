@@ -9,6 +9,7 @@ const groups = [
   { id: 2, title: "Employee 2" },
   { id: 3, title: "Employee 3" },
   { id: 4, title: "Employee 4" },
+  { id: 5, title: "Employee 5" },
 ];
 
 const items = [
@@ -16,20 +17,8 @@ const items = [
     id: 1,
     group: 1,
     title: "leave",
-    start_time: moment().set("hour", 24).set("minute", 0),
-    end_time: moment().add(1, "day").set("hour", 24).set("minute", 0),
-    itemProps: {
-      // these optional attributes are passed to the root <div /> of each item as <div {...itemProps} />
-      "data-custom-attribute": "Random content",
-      "aria-hidden": true,
-      onDoubleClick: () => {
-        console.log("You clicked double!");
-      },
-      className: "weekend",
-      style: {
-        background: "fuchsia",
-      },
-    },
+    start_time: moment("2023-08-30"),
+    end_time: moment("2023-09-05").set("hour", 24),
   },
   {
     id: 2,
@@ -37,47 +26,27 @@ const items = [
     title: "leave",
     start_time: moment().add(1, "days").set("hour", 24).set("minute", 0),
     end_time: moment().add(4, "days").set("hour", 24).set("minute", 0),
-    itemProps: {
-      // these optional attributes are passed to the root <div /> of each item as <div {...itemProps} />
-      "data-custom-attribute": "Random content",
-      "aria-hidden": true,
-      onDoubleClick: () => {
-        console.log("You clicked double!");
-      },
-      className: "weekend",
-      style: {
-        background: "fuchsia",
-      },
-    },
   },
   {
     id: 3, // Use a unique id here
     group: 3,
     title: "leave",
-    start_time: moment().set("hour", 0).set("minute", 0),
+    start_time: moment().set("hour", 24).set("minute", 0),
     end_time: moment().add(1, "day").set("hour", 24).set("minute", 0),
-    itemProps: {
-      // these optional attributes are passed to the root <div /> of each item as <div {...itemProps} />
-      "data-custom-attribute": "Random content",
-      "aria-hidden": true,
-      onDoubleClick: () => {
-        console.log("You clicked double!");
-      },
-      className: "weekend",
-      style: {
-        background: "fuchsia",
-      },
-    },
   },
   {
     id: 4, // Use a unique id here
     group: 4,
     title: "leave",
     start_time: moment().set("hour", 24).set("minute", 0),
-    end_time: moment().add(1, "day").set("hour", 24).set("minute", 0),
-    itemProps: {
-      className: "dot-item",
-    },
+    end_time: moment().add(10, "day").set("hour", 24).set("minute", 0),
+  },
+  {
+    id: 5,
+    group: 5,
+    title: "leave",
+    start_time: moment().set("hour", 24).set("minute", 0),
+    end_time: moment().add(3, "day").set("hour", 24).set("minute", 0),
   },
 ];
 
@@ -129,16 +98,13 @@ const VacationTracer = () => {
     // Handle click events on items here
     console.log("Item clicked:", itemId);
   };
-  const filterWeekends = (date) => {
-    return date.getDay() !== 0 && date.getDay() !== 6; // 0 is Sunday, 6 is Saturday
-  };
+
   const visibleTimeStart = moment().set("hour", 0);
-  const visibleTimeEnd = moment().add(4, "week");
+  const visibleTimeEnd = moment().add(4, "weeks");
   return (
     <div className="header">
       Rendered by react!
       <Timeline
-        className="bg-yellow"
         groups={groups}
         items={itemss} // Use the stateful itemss here
         defaultTimeStart={visibleTimeStart}
@@ -152,9 +118,8 @@ const VacationTracer = () => {
         sidebarWidth={300}
         itemRenderer={itemRender}
         onCanvasClick={handleCanvasClick}
-        maxZoom={1.24 * 86400 * 1000 * 7 * 3}
-        minZoom={1.24 * 86400 * 1000 * 7 * 3}
-        showWeekends={false}
+        maxZoom={0.8 * 86400 * 1000 * 7 * 3}
+        minZoom={0.8 * 86400 * 1000 * 7 * 3}
       />
     </div>
   );
