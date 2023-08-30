@@ -12,15 +12,10 @@
   display: inline-block;
   white-space: normal;
   vertical-align: top;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: hidden;
   -ms-touch-action: none;
   touch-action: none;
-}
-.rct-scroll {
-  border-top: 1px solid #e2e7ea;
-  border-bottom: 1px solid #e2e7ea;
-  height: inherit !important;
 }
 
 .react-calendar-timeline .rct-item:hover {
@@ -46,34 +41,31 @@
   position: relative;
   box-sizing: border-box;
   border-right: 1px solid #e2e7ea;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
 }
 .react-calendar-timeline .rct-sidebar.rct-sidebar-right {
   border-right: 0;
-  border-left: 0px solid #e2e7ea;
+  border-left: 1px solid #e2e7ea;
 }
 .react-calendar-timeline .rct-sidebar .rct-sidebar-row {
-  padding: 0 4px;
+  padding: 0 1.25rem;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   box-sizing: border-box;
   margin: 0;
-  border-bottom: 1px solid #e2e7ea !important;
+  border-bottom: 1px solid #e2e7ea;
+  text-align: start;
 }
 .react-calendar-timeline .rct-sidebar .rct-sidebar-row.rct-sidebar-row-odd {
-  background: rgba(253, 253, 253, 0.05);
+  background: rgba(0, 0, 0, 0);
 }
 .react-calendar-timeline .rct-sidebar .rct-sidebar-row.rct-sidebar-row-even {
   background: transparent;
 }
-.rct-sidebar {
-  border: 1px solid #e2e7ea;
-}
+
 .react-calendar-timeline .rct-vertical-lines .rct-vl {
   position: absolute;
   border-left: 1px solid #e2e7ea;
+  border-bottom: 1px solid #e2e7ea;
   z-index: 30;
 }
 .react-calendar-timeline .rct-vertical-lines .rct-vl.rct-vl-first {
@@ -81,10 +73,11 @@
 }
 .react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-6,
 .react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-0 {
-  background: #e2e7ea !important;
-  /* width: 0px !important; */
+  background: rgba(226, 231, 234, 0.4);
 }
-
+.react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-0 {
+  border-left: 0px solid rgba(226, 231, 234, 0.4) !important;
+}
 .react-calendar-timeline .rct-horizontal-lines {
   -webkit-user-select: none;
   -moz-user-select: -moz-none;
@@ -93,12 +86,12 @@
 }
 .react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
 .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
-  border-bottom: 1px solid #e2e7ea;
+  border-bottom: 1px solid #d1d6d8;
   box-sizing: border-box;
   z-index: 40;
 }
 .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
 }
 .react-calendar-timeline .rct-horizontal-lines .rct-hl-even {
   background: transparent;
@@ -113,48 +106,68 @@
 
 .react-calendar-timeline .rct-dateHeader {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 1.875rem;
+  height: 100%;
   border-bottom: 0px solid #e2e7ea;
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 14px;
   background-color: transparent;
   border-left: 0px solid #e2e7ea;
-  margin-bottom: 0.56rem;
 }
 
 .react-calendar-timeline .rct-dateHeader-primary {
   background-color: initial;
   border-left: 0px solid #e2e7ea;
-  border-right: 0px solid #bbb;
+  border-right: 0px solid #e2e7ea;
   color: #fff;
 }
 
 .react-calendar-timeline .rct-header-root {
-  background: #659949;
-  border-bottom: 0px solid #e2e7ea !important;
-  border-radius: 20rem;
-  -webkit-border-radius: 20rem;
-  -moz-border-radius: 20rem;
-  -ms-border-radius: 20rem;
-  -o-border-radius: 20rem;
-  overflow: hidden;
+  background: transparent;
+  border-bottom: 0px solid #e2e7ea;
 }
 
 .react-calendar-timeline .rct-calendar-header {
-  border: 0px !important;
+  border: 0px solid #e2e7ea;
 }
-.reservation__label {
-  color: black;
-  height: 100%;
+.rct-outer {
+  background-color: #fff;
+  border: 1px solid #e2e7ea;
+  border-right: none;
+  overflow: hidden;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
-.rct-header-root {
-  background: transparent !important;
+.rct-dateHeader {
+  display: flex;
+  flex-direction: column-reverse;
 }
-.dot-item {
-  width: 10px;
-  height: 10px;
-  background-color: blue;
-  border-radius: 50%;
+.renderItem {
+  display: flex;
+  gap: 30px;
+}
+.renderItemBox {
+  width: 30px;
+  height: 30px;
+  background-color: green;
+}
+.rct-item {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.itemBox {
+  width: 1.75rem;
+  height: 1.375rem;
+  background-color: #30efa6;
+  border-radius: 0.3125rem;
+  -webkit-border-radius: 0.3125rem;
+  -moz-border-radius: 0.3125rem;
+  -ms-border-radius: 0.3125rem;
+  -o-border-radius: 0.3125rem;
 }
