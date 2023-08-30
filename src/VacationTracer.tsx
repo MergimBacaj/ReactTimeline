@@ -1,9 +1,12 @@
 import moment from "moment";
 import "react-calendar-timeline/lib/Timeline.css";
-import Timeline from "react-calendar-timeline";
+import Timeline, { DateHeader } from "react-calendar-timeline";
 import { useState } from "react";
 import itemRender from "./itemRender";
 import "./index.css";
+
+import { TimelineHeaders, SidebarHeader } from "react-calendar-timeline";
+
 const groups = [
   { id: 1, title: "Employee 1" },
   { id: 2, title: "Employee 2" },
@@ -103,7 +106,6 @@ const VacationTracer = () => {
   const visibleTimeEnd = moment().add(4, "weeks");
   return (
     <div className="header">
-      Rendered by react!
       <Timeline
         groups={groups}
         items={itemss} // Use the stateful itemss here
@@ -113,14 +115,35 @@ const VacationTracer = () => {
         onItemResize={handleItemResize}
         onItemClick={handleItemClick}
         lineHeight={36}
-        canResize={"both"}
-        sidebarContent={<p id="hh">month</p>}
-        sidebarWidth={300}
         itemRenderer={itemRender}
         onCanvasClick={handleCanvasClick}
         maxZoom={0.8 * 86400 * 1000 * 7 * 3}
         minZoom={0.8 * 86400 * 1000 * 7 * 3}
-      />
+      >
+        <TimelineHeaders>
+          <SidebarHeader>
+            {({ getRootProps }) => {
+              return (
+                <div
+                  {...getRootProps()}
+                  style={{
+                    textAlign: "start",
+                    width: "150px",
+                    fontWeight: "bold",
+                    verticalAlign: "center",
+                    alignSelf: "center",
+                  }}
+                >
+                  <span>August</span>
+                </div>
+              );
+            }}
+          </SidebarHeader>
+
+          <DateHeader className="weekdays" />
+          <DateHeader unit="day" labelFormat="ddd" className="weekdayNames" />
+        </TimelineHeaders>
+      </Timeline>
     </div>
   );
 };
