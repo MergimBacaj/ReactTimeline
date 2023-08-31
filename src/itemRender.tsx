@@ -1,14 +1,13 @@
 import moment from "moment";
-
-const itemRender = ({ item, itemContext, getItemProps, getResizeProps }) => {
+import { ReactCalendarItemRendererProps } from "react-calendar-timeline";
+const itemRender = ({ item, getItemProps }: ReactCalendarItemRendererProps) => {
   // const { left: leftResizeProps, right: rightResizeProps } = getResizeProps();
   // const backgroundColor = itemContext.selected
   //   ? itemContext.dragging
   //     ? "red"
   //     : "yellow"
   //   : "gray";
-  console.log(item);
-  const getDayNamesBetweenDates = (startDate, endDate) => {
+  const getDayNamesBetweenDates = (startDate: Date, endDate: Date) => {
     const dayNames = [];
     const currentDate = moment(startDate);
 
@@ -20,13 +19,15 @@ const itemRender = ({ item, itemContext, getItemProps, getResizeProps }) => {
 
     return dayNames;
   };
-  const leaveDays = getDayNamesBetweenDates(item.start_time, item.end_time);
-  console.log(leaveDays);
+  const leaveDays = getDayNamesBetweenDates(
+    new Date(item.start_time),
+    new Date(item.end_time)
+  );
   return (
     <div
       {...getItemProps({
         style: {
-          color: item.color,
+          // color: item.color,
           borderRadius: 50,
           borderColor: "none",
           boxShadow: `0 1px 5px 0 rgba(0, 0, 0, 0.2),
@@ -37,17 +38,18 @@ const itemRender = ({ item, itemContext, getItemProps, getResizeProps }) => {
         },
       })}
     >
-      {leaveDays.map((day) => {
+      {leaveDays.map((day, index) => {
         if (day === "Sat" || day === "Sun") {
           return (
             <div
+              key={index}
               className="itemBox"
               style={{ background: "transparent" }}
             ></div>
           );
         }
 
-        return <div className="itemBox"></div>;
+        return <div key={index} className="itemBox"></div>;
       })}
     </div>
   );
